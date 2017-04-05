@@ -24,7 +24,7 @@ activities <- rbind(trainActivities, testActivites)
 
 trainData <- read.table("train/X_train.txt")
 testData <- read.table("test/X_test.txt")
-mergedData <- rbind(trainSet, testSet)
+mergedData <- rbind(trainData, testData)
 
 
 # 2.Load features and extract only the mean and standard deviation
@@ -47,4 +47,4 @@ write.table(allData, "allData.txt")
 # 5.creates a second, independent tidy data set 
 #   with the average of each variable for each activity and each subject.
 averageData <- ddply(allData, .(subject, activity), function(x) colMeans(x[,3:68]))
-write.table(averageData, "averageData.txt")
+write.table(averageData, "averageData.txt", row.name=FALSE)
